@@ -1,26 +1,234 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --fg: #0a0a0a;
+  --fg-muted: #3d3d3d;
+  --red: #e11d2e;
+  --red-hover: #c41828;
+  --yellow: #fcd34d;
+  --yellow-dark: #f5c518;
+  --teal: #1a9a83;
+  --teal-dark: #148f7a;
+  --purple: #7c3aed;
+  --pink-highlight: #fecdd3;
+  --border: #0a0a0a;
+  --shadow: 4px 4px 0 0 #0a0a0a;
+  --shadow-lg: 6px 6px 0 0 #0a0a0a;
+  --shadow-sm: 3px 3px 0 0 #0a0a0a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #ffffff;
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-red: var(--red);
+  --color-yellow: var(--yellow);
+  --color-teal: var(--teal);
+  --color-purple: var(--purple);
+  --color-border: var(--border);
+  --font-display: var(--font-display-fam);
+  --font-body: var(--font-body-fam);
+  --font-hand: var(--font-hand-fam);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-hand {
+  font-family: var(--font-hand), cursive;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--fg);
+}
+
+/* Neo-brutalist primitives */
+.brutal-border {
+  border: 3px solid var(--border);
+}
+
+.brutal-shadow {
+  box-shadow: var(--shadow);
+}
+
+.brutal-shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.brutal-shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.bg-yellow-soft {
+  background-color: color-mix(in srgb, var(--yellow) 35%, white);
+}
+
+.brutal-card {
+  background: #fff;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.brutal-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--border);
+}
+
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border: 3px solid var(--border);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none !important;
+}
+
+.btn-red {
+  background: var(--red);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
+.btn-red:hover {
+  background: var(--red-hover);
+  box-shadow: 6px 6px 0 0 var(--border);
+}
+
+.btn-white {
+  background: #fff;
+  color: var(--fg);
+  box-shadow: var(--shadow);
+}
+
+.btn-white:hover {
+  box-shadow: 6px 6px 0 0 var(--border);
+}
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--fg);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-yellow:hover {
+  background: var(--yellow-dark);
+  box-shadow: var(--shadow);
+}
+
+.highlight-mark {
+  background: linear-gradient(
+    to bottom,
+    transparent 55%,
+    var(--pink-highlight) 55%,
+    var(--pink-highlight) 88%,
+    transparent 88%
+  );
+}
+
+.badge-tilt {
+  display: inline-block;
+  background: var(--yellow);
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transform: rotate(-2deg);
+  padding: 0.35rem 0.9rem;
+}
+
+.dotted-grid {
+  background-color: #fff;
+  background-image: radial-gradient(#d4d4d4 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+.insight-card-white {
+  background: #fff;
+}
+
+.insight-card-teal {
+  background: var(--teal);
+}
+
+.insight-card-red {
+  background: var(--red);
+}
+
+.insight-card-yellow {
+  background: var(--yellow);
+}
+
+.section-teal {
+  background: var(--teal);
+}
+
+.focus-bar-purple {
+  background: var(--purple);
+}
+.focus-bar-red {
+  background: var(--red);
+}
+.focus-bar-yellow {
+  background: var(--yellow);
+}
+.focus-bar-teal {
+  background: var(--teal-dark);
+}
+
+.work-bar-red {
+  background: var(--red);
+}
+.work-bar-yellow {
+  background: var(--yellow);
+}
+.work-bar-teal {
+  background: var(--teal);
+}
+.work-bar-purple {
+  background: var(--purple);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .brutal-card:hover,
+  .brutal-btn:hover {
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
