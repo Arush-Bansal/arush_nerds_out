@@ -122,7 +122,7 @@ export const workTiles: WorkTile[] = [
     ],
   },
   {
-    id: "phoenix IITD",
+    id: "phoenix",
     title: "Phoenix IITD",
     subtitle: "IIT Delhi · Product community",
     description:
