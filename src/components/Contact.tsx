@@ -5,9 +5,9 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t-[3px] border-border bg-white py-16 md:py-24"
+      className="border-t-[3px] border-border bg-[color-mix(in_srgb,var(--teal)_40%,white)] py-16 md:py-24"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="site-container">
         <div className="brutal-card brutal-shadow-lg rounded-md p-8 md:p-12">
           <p className="font-hand text-2xl font-bold text-red">Contact</p>
           <h2 className="font-display mt-2 text-4xl text-fg md:text-5xl">

@@ -5,13 +5,13 @@ const cardLayout = [
   { position: "left-0 top-0", rotate: "-rotate-3", z: "z-10" },
   { position: "right-0 top-6 sm:top-10", rotate: "rotate-2", z: "z-20" },
   { position: "left-6 top-[42%] sm:left-10", rotate: "-rotate-2", z: "z-30" },
-  { position: "right-4 bottom-0 sm:right-8", rotate: "rotate-3", z: "z-40" },
+  { position: "right-4 bottom-0 sm:right-8", rotate: "rotate-3", z: "z-30" },
 ] as const;
 
 export function Hero() {
   return (
     <section className="bg-white pt-10 pb-16 md:pt-14 md:pb-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="site-container">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
           <div>
             <p className="badge-tilt font-hand mb-8 text-lg font-bold tracking-wide text-fg uppercase">

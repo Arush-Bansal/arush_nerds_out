@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="bg-bg">
+      <main className="relative z-0 bg-bg">
         <Hero />
         <About />
         <WorkTiles />

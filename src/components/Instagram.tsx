@@ -6,7 +6,7 @@ export function Instagram() {
       id="instagram"
       className="border-t-[3px] border-border bg-[color-mix(in_srgb,var(--pink-highlight)_45%,white)] py-16 md:py-24"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="site-container">
         <div className="brutal-card brutal-shadow-lg rounded-md p-8 md:flex md:items-center md:justify-between md:gap-10 md:p-12">
           <div className="max-w-xl">
             <p className="font-hand text-2xl font-bold text-purple">Instagram</p>

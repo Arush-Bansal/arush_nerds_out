@@ -3,7 +3,7 @@ import Link from "next/link";
 export function WorkPageHeader() {
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+      <div className="site-container flex items-center justify-between gap-4 py-4">
         <Link
           href="/"
           className="font-display text-lg tracking-tight text-fg sm:text-xl"

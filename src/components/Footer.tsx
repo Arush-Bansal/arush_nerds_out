@@ -19,7 +19,7 @@ export function Footer() {
 
   return (
     <footer className="border-t-[3px] border-border bg-fg py-14 text-white">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="site-container">
         <div className="grid gap-10 sm:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <p className="font-display text-2xl">
@@ -72,7 +72,7 @@ export function Footer() {
             © {year} {site.name}
           </p>
           <p className="text-sm font-medium text-white/60">
-            Built for{" "}
+            {/* Built for{" "} */}
             <span className="font-bold text-yellow">{site.domain}</span>
           </p>
         </div>

@@ -27,15 +27,14 @@ export function WorkArticle({ post }: WorkArticleProps) {
             return <Callout key={section.id}>{section.content}</Callout>;
           case "paragraph":
             return (
-              <p
-                key={section.id}
-                className="mb-5 text-base font-medium leading-relaxed text-fg-muted"
-              >
-                {section.content}
+              <div key={section.id} className="mb-5">
+                <p className="text-base font-medium leading-relaxed text-fg-muted">
+                  {section.content}
+                </p>
                 {section.note ? (
-                  <HandwrittenNote className="mt-3 block">{section.note}</HandwrittenNote>
+                  <HandwrittenNote className="mt-3">{section.note}</HandwrittenNote>
                 ) : null}
-              </p>
+              </div>
             );
           case "heading":
             return (

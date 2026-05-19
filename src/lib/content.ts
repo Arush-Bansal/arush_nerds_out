@@ -2,7 +2,7 @@ export const site = {
   name: "Arush Bansal",
   domain: "arush-nerds-out",
   tagline: "Building products that ship",
-  bio: "IIT Delhi alum and co-founder of Grifi. Product, engineering, and communities — based in Bengaluru.",
+  bio: "IIT Delhi alum and co-founder of Grifi. Product, engineering, and communities",
   email: "arush@grifi.in",
   links: {
     linkedin: "https://www.linkedin.com/in/arush-bansal",
@@ -60,9 +60,9 @@ export const about = {
     "What keeps me going is simple: real problems, tight feedback loops, and systems that work when nobody's watching.",
   ],
   highlights: [
-    { label: "IIT Delhi", value: "B.Tech Chemical Engineering" },
-    { label: "Now", value: "Co-founder @ Grifi" },
-    { label: "Previously", value: "JLR · Floworks.ai" },
+    { label: "B.Tech Chemical Engineering", value: "IIT Delhi" },
+    { label: "Startups I've built", value: "Co-founder @ Grifi | Unipace.in" },
+    { label: "Previously worked at", value: "Jaguar Land Rover | Floworks.ai (YC W23)" },
     { label: "Based in", value: "Bengaluru, India" },
   ],
 } as const;
@@ -122,16 +122,16 @@ export const workTiles: WorkTile[] = [
     ],
   },
   {
-    id: "phoenix",
-    title: "Phoenix",
+    id: "phoenix IITD",
+    title: "Phoenix IITD",
     subtitle: "IIT Delhi · Product community",
     description:
-      "Led Phoenix — the institute's largest product community and a two-month innovation campaign.",
+      "Formed Phoenix IITD, the institute's very own product community and a two-month innovation campaign.",
     tags: ["Leadership", "Community"],
     category: "Community",
     categoryEmoji: "👥",
     barClass: "work-bar-purple",
-    logo: { src: "/logos/phoenix.svg", alt: "Phoenix" },
+    logo: { src: "/logos/phoenix.svg", alt: "Phoenix IITD" },
     floatingIcons: [
       { emoji: "🔥", placement: "top-left", rotate: "-rotate-12", bgClass: "bg-red" },
       { emoji: "✨", placement: "right", rotate: "rotate-6", bgClass: "bg-yellow" },
@@ -297,7 +297,7 @@ export const instagram = {
 export const contact = {
   headline: "Say hello",
   subtext:
-    "Open to thoughtful conversations — collaborations, roles, or just comparing notes on what you're building.",
+    "Got something interersting to discuss? Or just want to invite me for a trip :)....just message me any of these channels",
   channels: [
     {
       label: "Email",

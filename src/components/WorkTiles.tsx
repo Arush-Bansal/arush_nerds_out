@@ -102,7 +102,7 @@ export function WorkTiles() {
 
   return (
     <section id="work" className="border-t-[3px] border-border bg-white py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="site-container">
         <div className="mb-12">
           <p className="font-hand text-2xl font-bold text-red">Latest work</p>
           <h2 className="font-display mt-2 text-4xl text-fg md:text-5xl">
