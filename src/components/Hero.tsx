@@ -42,6 +42,12 @@ export function Hero() {
                 {hero.secondaryCta.label}
               </a>
               <Link
+                href={hero.timelineCta.href}
+                className="brutal-btn btn-yellow rounded-md px-6 py-3.5 text-sm"
+              >
+                {hero.timelineCta.label} →
+              </Link>
+              <Link
                 href={hero.tertiaryCta.href}
                 className="brutal-btn btn-white rounded-md px-6 py-3.5 text-sm"
               >

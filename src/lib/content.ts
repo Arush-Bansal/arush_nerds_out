@@ -26,6 +26,7 @@ export const hero = {
     "Hi, I'm Arush Bansal, IIT Delhi alum, co-founder of Grifi, and ex-Jaguar Land Rover & Floworks.ai (YC W23). Do navigate here to know what I've done, what I post online and what am I upto next.",
   primaryCta: { label: "See my work", href: "#work" },
   secondaryCta: { label: "Get in touch", href: "#contact" },
+  timelineCta: { label: "My timeline", href: "/timeline" },
   tertiaryCta: { label: "My resume", href: "/resume" },
   insights: [
     {
@@ -364,6 +365,117 @@ export const resume = {
     "Technical leadership",
   ],
 } as const;
+
+export type TimelineLogo = {
+  src: string;
+  alt: string;
+};
+
+export type TimelineExperienceEntry = {
+  id: string;
+  startYear: number;
+  endYear: number | null;
+  role: string;
+  org: string;
+  description: string;
+  href?: string;
+  hrefLabel?: string;
+  logo?: TimelineLogo;
+  emoji?: string;
+  barClass: string;
+};
+
+export const timeline = {
+  badge: "Timeline",
+  headline: "What I was doing, year by year",
+  subtext:
+    "Work and studies side by side — same years, fuller picture.",
+  education: {
+    startYear: 2021,
+    endYear: 2025,
+    institution: "IIT Delhi",
+    degree: "B.Tech Chemical Engineering",
+    description:
+      "Four years on campus — mess systems at 10k+ DAUs, SportsHub, InterIIT, and leading Phoenix while finishing Chemical Engineering.",
+    barClass: "bg-yellow",
+    emoji: "🏛️",
+  },
+  experience: [
+    {
+      id: "grifi",
+      startYear: 2024,
+      endYear: null,
+      role: "Co-founder",
+      org: "Grifi",
+      description:
+        "Building product and engineering at a startup focused on shipping real tools, not slide decks.",
+      href: site.links.grifi,
+      hrefLabel: "Grifi on LinkedIn",
+      emoji: "🚀",
+      barClass: "work-bar-red",
+    },
+    {
+      id: "floworks",
+      startYear: 2023,
+      endYear: 2024,
+      role: "Early Engineer",
+      org: "Floworks.ai (YC W23)",
+      description:
+        "One of four engineers who built and shipped the go-to-market MVP — agentic automation for B2B sales.",
+      href: "https://floworks.ai",
+      hrefLabel: "floworks.ai",
+      logo: { src: "/logos/floworks.svg", alt: "Floworks.ai" },
+      barClass: "work-bar-red",
+    },
+    {
+      id: "jlr",
+      startYear: 2023,
+      endYear: 2024,
+      role: "Graduate Software Engineer",
+      org: "Jaguar Land Rover",
+      description:
+        "Python behavioral simulation module modeling human driving patterns across drive cycles.",
+      href: "https://www.linkedin.com/company/jlrindia",
+      hrefLabel: "JLR India",
+      logo: { src: "/logos/jlr.svg", alt: "Jaguar Land Rover" },
+      barClass: "work-bar-teal",
+    },
+    {
+      id: "phoenix",
+      startYear: 2022,
+      endYear: 2024,
+      role: "Lead · Product community",
+      org: "Phoenix IIT Delhi",
+      description:
+        "Founded and led the institute's product community — a two-month innovation campaign with hundreds of builders.",
+      logo: { src: "/logos/phoenix.svg", alt: "Phoenix IIT Delhi" },
+      barClass: "work-bar-purple",
+    },
+    {
+      id: "campus-builds",
+      startYear: 2021,
+      endYear: 2023,
+      role: "Builder on campus",
+      org: "IIT Delhi projects",
+      description:
+        "Mess-system (10k+ DAUs), SportsHub, FeynmanAI, and the rest of the hostel-and-hackathon garage.",
+      href: "https://github.com/Arush-Bansal",
+      hrefLabel: "GitHub",
+      emoji: "🧱",
+      barClass: "work-bar-yellow",
+    },
+  ] satisfies TimelineExperienceEntry[],
+} as const;
+
+function formatTimelineYears(startYear: number, endYear: number | null): string {
+  if (endYear === null) return `${startYear} – Present`;
+  if (startYear === endYear) return String(startYear);
+  return `${startYear} – ${endYear}`;
+}
+
+export function getTimelineYearLabel(entry: TimelineExperienceEntry): string {
+  return formatTimelineYears(entry.startYear, entry.endYear);
+}
 
 export const instagram = {
   headline: "Follow along on Instagram",
