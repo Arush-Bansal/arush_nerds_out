@@ -15,6 +15,8 @@ export const site = {
   },
 } as const;
 
+export const siteUrl = `https://${site.domain}.com` as const;
+
 export const hero = {
   badge: "Engineer · Founder",
   headlineBefore: "I build ",
@@ -95,6 +97,8 @@ export type WorkTile = {
   tags: string[];
   href?: string;
   hrefLabel?: string;
+  storyHref?: string;
+  storyLabel?: string;
   category: string;
   categoryEmoji: string;
   barClass: string;
@@ -112,13 +116,13 @@ export const workTiles: WorkTile[] = [
     tags: ["YC", "Agents", "B2B SaaS"],
     href: "https://floworks.ai",
     hrefLabel: "floworks.ai",
-    category: "Product",
+    category: "Early startup engineer",
     categoryEmoji: "🚀",
     barClass: "work-bar-red",
-    logo: { src: "/logos/floworks.svg", alt: "Floworks.ai" },
+    logo: { src: "/logos/floworks.svg", alt: "Floworks.ai (YC W23)" },
     floatingIcons: [
-      { emoji: "⚡", placement: "top-right", rotate: "rotate-12", bgClass: "bg-yellow" },
-      { emoji: "📈", placement: "bottom-left", rotate: "-rotate-6", bgClass: "bg-white" },
+      { emoji: "🟧", placement: "top-right", rotate: "rotate-12", bgClass: "bg-yellow" },
+      { emoji: "🤖", placement: "bottom-left", rotate: "-rotate-6", bgClass: "bg-white" },
     ],
   },
   {
@@ -128,13 +132,13 @@ export const workTiles: WorkTile[] = [
     description:
       "Formed Phoenix IITD, the institute's very own product community and a two-month innovation campaign.",
     tags: ["Leadership", "Community"],
-    category: "Community",
+    category: "Community builder",
     categoryEmoji: "👥",
     barClass: "work-bar-purple",
-    logo: { src: "/logos/phoenix.svg", alt: "Phoenix IITD" },
+    logo: { src: "/logos/phoenix.svg", alt: "Phoenix IIT Delhi" },
     floatingIcons: [
       { emoji: "🔥", placement: "top-left", rotate: "-rotate-12", bgClass: "bg-red" },
-      { emoji: "✨", placement: "right", rotate: "rotate-6", bgClass: "bg-yellow" },
+      { emoji: "🏛️", placement: "right", rotate: "rotate-6", bgClass: "bg-yellow" },
     ],
   },
   {
@@ -144,12 +148,12 @@ export const workTiles: WorkTile[] = [
     description:
       "Applied LLMs — custom agents, retrieval, and interfaces that make AI useful without the theatre.",
     tags: ["LLMs", "Agents", "RAG"],
-    category: "AI",
+    category: "Early AI engineer",
     categoryEmoji: "🤖",
     barClass: "work-bar-teal",
     logo: { src: "/logos/novagpt.svg", alt: "NovaGPT" },
     floatingIcons: [
-      { emoji: "🧠", placement: "top-right", rotate: "rotate-6", bgClass: "bg-teal" },
+      { emoji: "✨", placement: "top-right", rotate: "rotate-6", bgClass: "bg-teal" },
       { emoji: "💬", placement: "bottom-left", rotate: "-rotate-3", bgClass: "bg-white" },
     ],
   },
@@ -160,13 +164,13 @@ export const workTiles: WorkTile[] = [
     description:
       "A sandbox for creator-focused products — tooling, workflows, and prototypes around content and UGC.",
     tags: ["Creators", "UGC"],
-    category: "Product",
+    category: "Product tinkerer",
     categoryEmoji: "🛠️",
     barClass: "work-bar-yellow",
     logo: { src: "/logos/creatorbox.svg", alt: "Creatorbox" },
     floatingIcons: [
       { emoji: "🎬", placement: "left", rotate: "-rotate-6", bgClass: "bg-purple" },
-      { emoji: "📦", placement: "bottom-right", rotate: "rotate-12", bgClass: "bg-yellow" },
+      { emoji: "🎨", placement: "bottom-right", rotate: "rotate-12", bgClass: "bg-yellow" },
     ],
   },
   {
@@ -178,13 +182,13 @@ export const workTiles: WorkTile[] = [
     tags: ["Automotive", "Python"],
     href: "https://www.linkedin.com/company/jlrindia",
     hrefLabel: "JLR India",
-    category: "Engineering",
+    category: "Graduate engineer",
     categoryEmoji: "⚙️",
     barClass: "work-bar-teal",
     logo: { src: "/logos/jlr.svg", alt: "Jaguar Land Rover" },
     floatingIcons: [
       { emoji: "🚗", placement: "top-right", rotate: "rotate-3", bgClass: "bg-teal" },
-      { emoji: "🛞", placement: "bottom-left", rotate: "-rotate-12", bgClass: "bg-white" },
+      { emoji: "🐍", placement: "bottom-left", rotate: "-rotate-12", bgClass: "bg-white" },
     ],
   },
   {
@@ -196,13 +200,13 @@ export const workTiles: WorkTile[] = [
     tags: ["Open source"],
     href: "https://github.com/Arush-Bansal",
     hrefLabel: "GitHub",
-    category: "Engineering",
-    categoryEmoji: "🗺️",
+    category: "Open-source builder",
+    categoryEmoji: "💻",
     barClass: "work-bar-purple",
-    logo: { src: "/logos/projects.svg", alt: "Side projects" },
+    logo: { src: "/logos/projects.svg", alt: "GitHub projects" },
     floatingIcons: [
       { emoji: "⭐", placement: "top-left", rotate: "-rotate-6", bgClass: "bg-yellow" },
-      { emoji: "🔧", placement: "bottom-right", rotate: "rotate-6", bgClass: "bg-white" },
+      { emoji: "🐙", placement: "bottom-right", rotate: "rotate-6", bgClass: "bg-white" },
     ],
   },
 ];
@@ -244,7 +248,7 @@ export const resume = {
       company: "Floworks.ai",
       role: "Early Engineer",
       period: "YC W23",
-      location: "Remote / India",
+      location: "Bengaluru",
       bullets: [
         "One of four engineers who built and shipped the go-to-market MVP.",
         "Agentic automation for sales — B2B SaaS from zero to customers.",
@@ -267,6 +271,80 @@ export const resume = {
       bullets: [
         "Led Phoenix — the institute's largest product community and a two-month innovation campaign.",
       ],
+    },
+  ],
+  projects: [
+    {
+      name: "NovaGPT",
+      subtitle: "AI · LLM applications",
+      description:
+        "Applied LLMs — custom agents, retrieval, and interfaces built for repeat use, not demo theatre.",
+      tags: ["LLMs", "Agents", "RAG"],
+    },
+    {
+      name: "SportsHub",
+      subtitle: "Sports · Campus platform",
+      description:
+        "End-to-end platform for sports scheduling, teams, and live updates across IIT Delhi intramurals.",
+      tags: ["Full-stack", "Product"],
+    },
+    {
+      name: "Creatorbox",
+      subtitle: "Creator tools & experiments",
+      description:
+        "Sandbox for creator-economy prototypes — workflows, UGC tooling, and content pipeline automation.",
+      tags: ["Creators", "UGC"],
+    },
+    {
+      name: "Mess-system",
+      subtitle: "Campus infrastructure",
+      description:
+        "Mess ordering and operations stack for IIT Delhi hostels — payments, menus, and kitchen workflows.",
+      tags: ["Scale", "Full-stack"],
+    },
+    {
+      name: "FeynmanAI",
+      subtitle: "EdTech · AI tutoring",
+      description:
+        "Teaching assistant using LLMs to explain concepts step-by-step with Socratic follow-ups.",
+      tags: ["EdTech", "LLMs"],
+    },
+    {
+      name: "Unipace",
+      subtitle: "Opportunity discovery",
+      description:
+        "Portal surfacing programs, competitions, and deadlines for students — built and shipped as a startup.",
+      tags: ["Product", "B2C"],
+    },
+  ],
+  achievements: [
+    {
+      title: "Mess-system at scale",
+      description:
+        "Scaled campus mess platform to 10k+ DAUs across hostels; featured in The Indian Express.",
+      period: "IIT Delhi",
+    },
+    {
+      title: "InterIIT Tech Meet",
+      description: "Product + ML problem statement lead — owned end-to-end delivery for the institute team.",
+      period: "InterIIT",
+    },
+    {
+      title: "Phoenix IIT Delhi",
+      description:
+        "Founded and led the institute's product community; ran a two-month innovation campaign with hundreds of builders.",
+      period: "Campus",
+    },
+    {
+      title: "Floworks.ai (YC W23)",
+      description:
+        "Early engineer on a four-person team that shipped the go-to-market MVP for agentic B2B sales automation.",
+      period: "YC W23",
+    },
+    {
+      title: "Open source",
+      description: "48+ public repositories — agents, optimizers, portals, and side experiments on GitHub.",
+      period: "Ongoing",
     },
   ],
   education: [

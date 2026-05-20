@@ -20,7 +20,12 @@ export function Resume() {
   return (
     <article className="brutal-card rounded-md p-8 md:p-12">
       <header>
-        <h1 className="font-display text-4xl text-fg md:text-5xl">{resume.name}</h1>
+        <h1
+          id="resume-heading"
+          className="font-display text-4xl text-fg md:text-5xl"
+        >
+          {resume.name}
+        </h1>
         <p className="mt-2 text-lg font-bold text-fg">{resume.title}</p>
         <p className="mt-1 text-sm font-medium text-fg-muted">{resume.location}</p>
       </header>
@@ -82,6 +87,52 @@ export function Resume() {
                     ))}
                   </ul>
                 </div>
+              </li>
+            ))}
+          </ul>
+        </ResumeSection>
+
+        <ResumeSection title="Projects">
+          <ul className="space-y-4">
+            {resume.projects.map((project) => (
+              <li
+                key={project.name}
+                className="brutal-border brutal-shadow-sm rounded-md bg-white p-5"
+              >
+                <h3 className="font-display text-lg text-fg">{project.name}</h3>
+                <p className="mt-1 text-sm font-bold text-fg">{project.subtitle}</p>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-fg-muted">
+                  {project.description}
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="brutal-border rounded-md bg-yellow-soft px-2 py-0.5 text-xs font-bold tracking-wide text-fg uppercase"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </ResumeSection>
+
+        <ResumeSection title="Achievements">
+          <ul className="space-y-4">
+            {resume.achievements.map((item) => (
+              <li
+                key={item.title}
+                className="brutal-border brutal-shadow-sm rounded-md bg-white p-5"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="font-display text-lg text-fg">{item.title}</h3>
+                  <span className="font-hand text-sm font-bold text-red">{item.period}</span>
+                </div>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-fg-muted">
+                  {item.description}
+                </p>
               </li>
             ))}
           </ul>

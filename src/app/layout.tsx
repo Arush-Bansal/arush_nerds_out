@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Caveat, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/content";
+import { site, siteUrl } from "@/lib/content";
 
 const display = Archivo_Black({
   variable: "--font-display-fam",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: `${site.name} · ${site.tagline}`,
   description:
     "Portfolio of Arush Bansal — co-founder of Grifi, IIT Delhi alum, engineer at JLR and Floworks.ai. Products, communities, and code.",
-  metadataBase: new URL(`https://${site.domain}.com`),
+  metadataBase: new URL(siteUrl),
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: site.name,
