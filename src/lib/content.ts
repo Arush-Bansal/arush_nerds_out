@@ -18,15 +18,15 @@ export const site = {
 export const siteUrl = `https://${site.domain}.com` as const;
 
 export const hero = {
-  badge: "Engineer · Founder",
-  headlineBefore: "I build ",
-  headlineHighlight: "products",
-  headlineAfter: " that ship.",
+  badge: "AI Engineer & Founder",
+  headlineBefore: "A nerdy kid with an ",
+  headlineHighlight: "unreasonable obsession",
+  headlineAfter: " for building.",
   subtext:
-    "I'm Arush — IIT Delhi alum, co-founder of Grifi, and ex-JLR & Floworks (YC W23). This site is my work: product, engineering, and communities — with context, not résumé fluff.",
+    "Hi, I'm Arush Bansal, IIT Delhi alum, co-founder of Grifi, and ex-Jaguar Land Rover & Floworks.ai (YC W23). Do navigate here to know what I've done, what I post online and what am I upto next.",
   primaryCta: { label: "See my work", href: "#work" },
   secondaryCta: { label: "Get in touch", href: "#contact" },
-  resumeCta: { label: "View resume", href: "/resume" },
+  tertiaryCta: { label: "My resume", href: "/resume" },
   insights: [
     {
       emoji: "🛠️",
@@ -109,7 +109,7 @@ export type WorkTile = {
 export const workTiles: WorkTile[] = [
   {
     id: "floworks",
-    title: "Floworks.ai",
+    title: "Floworks.ai (YC W23)",
     subtitle: "YC W23 · Early engineering",
     description:
       "One of four engineers who built and shipped the go-to-market MVP. Agentic automation for sales.",
@@ -159,11 +159,11 @@ export const workTiles: WorkTile[] = [
   },
   {
     id: "creatorbox",
-    title: "Creatorbox",
+    title: "CreatorBox AI",
     subtitle: "Creator tools & experiments",
     description:
-      "A sandbox for creator-focused products — tooling, workflows, and prototypes around content and UGC.",
-    tags: ["Creators", "UGC"],
+      "A general Agentic AI editor for all thiings creatives like images, posters, videos, motion graphics, etc.",
+    tags: ["Creators", "AI Harness", "Editor"],
     category: "Product tinkerer",
     categoryEmoji: "🛠️",
     barClass: "work-bar-yellow",
@@ -375,7 +375,7 @@ export const instagram = {
 export const contact = {
   headline: "Say hello",
   subtext:
-    "Got something interersting to discuss? Or just want to invite me for a trip :)....just message me any of these channels",
+    "Got something interersting to discuss? Or just want to invite me for a trip :)....just message me any of these places",
   channels: [
     {
       label: "Email",

@@ -42,15 +42,15 @@ export function Hero() {
                 {hero.secondaryCta.label}
               </a>
               <Link
-                href={hero.resumeCta.href}
+                href={hero.tertiaryCta.href}
                 className="brutal-btn btn-white rounded-md px-6 py-3.5 text-sm"
               >
-                {hero.resumeCta.label}
+                {hero.tertiaryCta.label}
               </Link>
             </div>
           </div>
 
-          <div className="relative mx-auto h-[22rem] w-full max-w-[440px] sm:h-[26rem] sm:max-w-[520px] lg:mx-0 lg:ml-auto">
+          <div className="relative mx-auto hidden h-[22rem] w-full max-w-[440px] sm:h-[26rem] sm:max-w-[520px] md:block lg:mx-0 lg:ml-auto">
             {hero.insights.map((card, i) => {
               const layout = cardLayout[i];
               return (
