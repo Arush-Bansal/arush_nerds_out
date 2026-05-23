@@ -73,6 +73,19 @@ body {
   }
 }
 
+/* Section dividers — explicit rules so lines stay visible (not only via Tailwind color tokens) */
+.section-rule-top {
+  border-top: 3px solid var(--border);
+}
+
+.section-rule-bottom {
+  border-bottom: 3px solid var(--border);
+}
+
+.section-rule-top:first-child {
+  border-top: none;
+}
+
 /* Neo-brutalist primitives */
 .brutal-border {
   border: 3px solid var(--border);

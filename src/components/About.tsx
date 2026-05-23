@@ -5,7 +5,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="border-t-[3px] border-border bg-[color-mix(in_srgb,var(--yellow)_35%,white)] py-16 md:py-24"
+      className="section-rule-top bg-[color-mix(in_srgb,var(--yellow)_35%,white)] py-16 md:py-24"
     >
       <div className="site-container flex flex-col items-center gap-10 lg:flex-row lg:items-start lg:gap-8">
         <figure

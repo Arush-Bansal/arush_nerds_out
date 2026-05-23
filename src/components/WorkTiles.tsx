@@ -101,7 +101,7 @@ export function WorkTiles() {
   const more = workTiles.slice(3);
 
   return (
-    <section id="work" className="border-t-[3px] border-border bg-white py-16 md:py-24">
+    <section id="work" className="section-rule-top bg-white py-16 md:py-24">
       <div className="site-container">
         <div className="mb-12">
           <p className="font-hand text-2xl font-bold text-red">Latest work</p>

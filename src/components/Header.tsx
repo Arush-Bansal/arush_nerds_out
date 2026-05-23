@@ -1,6 +1,6 @@
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b-[3px] border-border bg-white">
+    <header className="section-rule-bottom sticky top-0 z-50 bg-white">
       <div className="site-container flex items-center justify-between gap-4 py-4">
         <a
           href="#"

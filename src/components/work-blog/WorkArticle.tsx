@@ -63,7 +63,7 @@ export function WorkArticle({ post }: WorkArticleProps) {
       })}
 
       {post.externalHref ? (
-        <p className="mt-10 border-t-[3px] border-border pt-8">
+        <p className="section-rule-top mt-10 pt-8">
           <a
             href={post.externalHref}
             target="_blank"

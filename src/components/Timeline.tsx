@@ -7,9 +7,19 @@ import {
   type TimelineLogo,
 } from "@/lib/content";
 
+/** Pixels per calendar year — keeps vertical bars proportional. */
+const PX_PER_YEAR = 44;
+const RANGE_END = 2026;
+
+function barHeightPx(startYear: number, endYear: number | null): number {
+  const end = endYear ?? RANGE_END;
+  const years = Math.max(end - startYear, 0.5);
+  return Math.round(years * PX_PER_YEAR);
+}
+
 function TimelineLogo({ logo, emoji }: { logo?: TimelineLogo; emoji?: string }) {
   return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border/30 bg-white sm:h-14 sm:w-14">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-md border-[3px] border-border bg-white sm:h-12 sm:w-12">
       {logo ? (
         <Image
           src={logo.src}
@@ -27,59 +37,66 @@ function TimelineLogo({ logo, emoji }: { logo?: TimelineLogo; emoji?: string }) 
   );
 }
 
-function EducationAside() {
+function EducationBar({ className = "" }: { className?: string }) {
   const edu = timeline.education;
+  const height = barHeightPx(edu.startYear, edu.endYear);
 
   return (
     <aside
-      className="lg:sticky lg:top-28 lg:self-start"
-      aria-label={`Education: ${edu.institution}, ${edu.startYear} to ${edu.endYear}`}
+      className={`flex shrink-0 flex-col items-center ${className}`}
+      aria-label={`${edu.institution}, ${edu.startYear} to ${edu.endYear}`}
     >
-      <p className="text-xs font-semibold tracking-widest text-fg-muted uppercase">
-        Education
-      </p>
-      <p className="font-display mt-3 text-2xl leading-tight text-fg">
+      <span className="text-xs font-medium text-fg-muted tabular-nums">
+        {edu.endYear}
+      </span>
+      <div
+        className="relative my-2 w-10 rounded-md bg-[#ececec] sm:w-11"
+        style={{ height: height + 16 }}
+      >
+        <div
+          className={`absolute right-0 bottom-2 left-0 rounded-md ${edu.barClass}`}
+          style={{ height }}
+          role="presentation"
+        />
+      </div>
+      <span className="text-xs font-medium text-fg-muted tabular-nums">
+        {edu.startYear}
+      </span>
+      <p className="font-hand mt-3 max-w-[4.5rem] text-center text-sm leading-tight font-bold text-fg">
         {edu.institution}
       </p>
-      <p className="mt-2 text-sm font-medium text-fg">{edu.degree}</p>
-      <p className="mt-1 text-sm font-medium text-red">
-        {edu.startYear} – {edu.endYear}
+      <p className="mt-1 max-w-[5.5rem] text-center text-[0.65rem] leading-snug font-medium text-fg-muted">
+        {edu.degree}
       </p>
-      <p className="mt-5 max-w-xs text-sm leading-relaxed text-fg-muted">
-        {edu.description}
-      </p>
-      <div
-        className="mt-8 hidden h-px w-12 bg-border lg:block"
-        aria-hidden
-      />
     </aside>
   );
 }
 
-function TimelineEntry({ entry }: { entry: TimelineExperienceEntry }) {
+function ExperienceEntry({ entry }: { entry: TimelineExperienceEntry }) {
+  const height = barHeightPx(entry.startYear, entry.endYear);
   const yearLabel = getTimelineYearLabel(entry);
 
   return (
-    <li className="relative grid grid-cols-[5.25rem_1.25rem_minmax(0,1fr)] items-start gap-x-5 sm:grid-cols-[6.5rem_1.5rem_minmax(0,1fr)] sm:gap-x-8">
-      <p className="pt-0.5 text-right text-sm font-medium text-fg-muted tabular-nums">
-        {yearLabel}
-      </p>
-
-      <div className="flex justify-center pt-1.5">
-        <span
-          className="relative z-10 h-2.5 w-2.5 rounded-full bg-border"
-          aria-hidden
+    <li className="flex gap-4 sm:gap-5">
+      <div
+        className="flex shrink-0 flex-col items-center pt-1"
+        aria-hidden
+      >
+        <div
+          className={`w-3 rounded-sm sm:w-3.5 ${entry.barClass}`}
+          style={{ height }}
         />
       </div>
 
-      <div className="flex min-w-0 gap-4 sm:gap-5">
+      <div className="flex min-w-0 flex-1 gap-4 sm:gap-5">
         <TimelineLogo logo={entry.logo} emoji={entry.emoji} />
-        <div className="min-w-0 pb-10 sm:pb-12">
-          <h3 className="text-base font-semibold text-fg sm:text-lg">
+        <div className="min-w-0 pb-2">
+          <p className="text-xs font-medium text-red tabular-nums">{yearLabel}</p>
+          <h3 className="mt-1 text-base font-semibold text-fg sm:text-lg">
             {entry.org}
           </h3>
           <p className="mt-0.5 text-sm text-fg-muted">{entry.role}</p>
-          <p className="mt-3 text-sm leading-relaxed text-fg-muted sm:text-[0.9375rem]">
+          <p className="mt-3 text-sm leading-relaxed text-fg-muted">
             {entry.description}
           </p>
           {entry.href && entry.hrefLabel && (
@@ -99,30 +116,44 @@ function TimelineEntry({ entry }: { entry: TimelineExperienceEntry }) {
 }
 
 export function Timeline() {
+  const edu = timeline.education;
   const entries = [...timeline.experience].sort(
     (a, b) => b.startYear - a.startYear || (b.endYear ?? 9999) - (a.endYear ?? 9999),
   );
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[minmax(0,15rem)_minmax(0,1fr)]">
-      <EducationAside />
+    <div className="min-w-0">
+      {/* Mobile: education strip above the stack */}
+      <div className="section-rule-bottom mb-10 flex gap-5 pb-10 sm:hidden">
+        <EducationBar />
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-semibold tracking-widest text-fg-muted uppercase">
+            Education
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+            {edu.description}
+          </p>
+        </div>
+      </div>
 
-      <div className="min-w-0">
-        <p className="mb-10 text-xs font-semibold tracking-widest text-fg-muted uppercase lg:mb-12">
-          Experience
-        </p>
+      <div className="flex gap-8 lg:gap-12">
+        {/* Desktop: college bar adjacent to the whole experience stack */}
+        <EducationBar className="hidden sm:flex lg:sticky lg:top-28 lg:self-start" />
 
-        <div className="relative">
-          <div
-            className="pointer-events-none absolute top-2 bottom-12 left-[5.875rem] w-px bg-border/25 sm:left-[7.25rem]"
-            aria-hidden
-          />
+        <div className="min-w-0 flex-1">
+          <p className="mb-8 text-xs font-semibold tracking-widest text-fg-muted uppercase sm:mb-10">
+            Experience
+          </p>
 
-          <ol>
+          <ol className="flex flex-col gap-12 sm:gap-14">
             {entries.map((entry) => (
-              <TimelineEntry key={entry.id} entry={entry} />
+              <ExperienceEntry key={entry.id} entry={entry} />
             ))}
           </ol>
+
+          <p className="mt-10 hidden text-sm leading-relaxed text-fg-muted sm:block">
+            {edu.description}
+          </p>
         </div>
       </div>
     </div>
@@ -131,7 +162,7 @@ export function Timeline() {
 
 export function TimelinePageHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/20 bg-white/95 backdrop-blur-sm">
+    <header className="section-rule-bottom sticky top-0 z-40 bg-white">
       <div className="site-container flex items-center justify-between gap-4 py-4">
         <Link
           href="/"

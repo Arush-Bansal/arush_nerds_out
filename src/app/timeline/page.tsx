@@ -32,7 +32,7 @@ export default function TimelinePage() {
         className="bg-white py-14 md:py-20"
         aria-labelledby="timeline-heading"
       >
-        <div className="site-container max-w-3xl">
+        <div className="site-container max-w-4xl">
           <p className="text-xs font-semibold tracking-widest text-fg-muted uppercase">
             {timeline.badge}
           </p>

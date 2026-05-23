@@ -9,7 +9,7 @@ function ResumeSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t-[3px] border-border pt-8 first:border-t-0 first:pt-0">
+    <section className="section-rule-top pt-8 first:border-t-0 first:pt-0">
       <h2 className="font-hand text-xl font-bold text-red">{title}</h2>
       <div className="mt-4">{children}</div>
     </section>
@@ -172,7 +172,7 @@ export function Resume() {
 
 export function ResumePageHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b-[3px] border-border bg-white">
+    <header className="section-rule-bottom sticky top-0 z-40 bg-white">
       <div className="site-container flex items-center justify-between gap-4 py-4">
         <Link
           href="/"

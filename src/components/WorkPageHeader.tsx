@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function WorkPageHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b-[3px] border-border bg-white">
+    <header className="section-rule-bottom sticky top-0 z-40 bg-white">
       <div className="site-container flex items-center justify-between gap-4 py-4">
         <Link
           href="/"

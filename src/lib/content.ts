@@ -389,7 +389,7 @@ export const timeline = {
   badge: "Timeline",
   headline: "What I was doing, year by year",
   subtext:
-    "Work and studies side by side — same years, fuller picture.",
+    "Experience stacked in time — IIT Delhi runs alongside as its own bar.",
   education: {
     startYear: 2021,
     endYear: 2025,
@@ -416,8 +416,8 @@ export const timeline = {
     },
     {
       id: "floworks",
-      startYear: 2023,
-      endYear: 2024,
+      startYear: 2022,
+      endYear: 2023,
       role: "Early Engineer",
       org: "Floworks.ai (YC W23)",
       description:
@@ -425,7 +425,7 @@ export const timeline = {
       href: "https://floworks.ai",
       hrefLabel: "floworks.ai",
       logo: { src: "/logos/floworks.svg", alt: "Floworks.ai" },
-      barClass: "work-bar-red",
+      barClass: "work-bar-yellow",
     },
     {
       id: "jlr",
@@ -450,19 +450,6 @@ export const timeline = {
         "Founded and led the institute's product community — a two-month innovation campaign with hundreds of builders.",
       logo: { src: "/logos/phoenix.svg", alt: "Phoenix IIT Delhi" },
       barClass: "work-bar-purple",
-    },
-    {
-      id: "campus-builds",
-      startYear: 2021,
-      endYear: 2023,
-      role: "Builder on campus",
-      org: "IIT Delhi projects",
-      description:
-        "Mess-system (10k+ DAUs), SportsHub, FeynmanAI, and the rest of the hostel-and-hackathon garage.",
-      href: "https://github.com/Arush-Bansal",
-      hrefLabel: "GitHub",
-      emoji: "🧱",
-      barClass: "work-bar-yellow",
     },
   ] satisfies TimelineExperienceEntry[],
 } as const;

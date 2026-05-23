@@ -5,7 +5,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-t-[3px] border-border bg-[color-mix(in_srgb,var(--teal)_40%,white)] py-16 md:py-24"
+      className="section-rule-top bg-[color-mix(in_srgb,var(--teal)_40%,white)] py-16 md:py-24"
     >
       <div className="site-container">
         <div className="brutal-card brutal-shadow-lg rounded-md p-8 md:p-12">
