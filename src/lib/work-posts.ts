@@ -17,7 +17,21 @@ export type WorkSection =
       intro?: string;
       items: { title: string; body: string }[];
     }
-  | { id: string; type: "insight"; content: string };
+  | { id: string; type: "insight"; content: string }
+  | {
+      id: string;
+      type: "technicalReadNav";
+      heading: string;
+      summary?: string;
+      parentSlug: string;
+      links: {
+        slug: string;
+        title: string;
+        emoji: string;
+        teaser: string;
+        accentClass: string;
+      }[];
+    };
 
 export type WorkPost = WorkPostMeta & {
   category: string;
@@ -271,57 +285,74 @@ const posts: Record<string, Omit<WorkPost, "nextRead">> = {
   },
   creatorbox: {
     slug: "creatorbox",
-    title: "Creatorbox",
-    subtitle: "Creator tools & experiments",
+    title: "CreatorBox AI",
+    subtitle: "Agentic editor for creatives",
     category: "Product",
     categoryEmoji: "🛠️",
     description:
-      "A sandbox for creator-focused products — tooling, workflows, and prototypes around content and UGC.",
+      "Desktop agentic editor for images, posters, video, and motion — LangGraph harness, Electron shell, and content strategy built for how creators actually ship.",
     sections: [
       {
         id: "intro",
         type: "callout",
         content:
-          "Creatorbox is where I prototype creator-economy ideas — tooling, workflows, and UGC experiments without pretending each one is a company on day one.",
+          "CreatorBox AI is a general-purpose agentic editor for creatives — one desktop app where AI can plan, call tools, and iterate across images, posters, video, and motion graphics without kicking you into five different tabs.",
+      },
+      {
+        id: "summary",
+        type: "paragraph",
+        content:
+          "Under the hood: a LangGraph DeepAgents harness for reliable multi-step workflows, an Electron + Vite shell with an extension-point core and local-first storage, and a content layer shaped around hook–body–CTA scripts plus competitor-aware analysis. The product thesis is simple — creators need an editor that respects attention, works offline with heavy assets, and speaks both engineering and platform-native content structure.",
       },
       {
         id: "h1",
         type: "heading",
-        content: "A sandbox, not a pitch deck",
+        content: "Why this exists",
       },
       {
         id: "p1",
         type: "paragraph",
         content:
-          "Creators juggle distribution, editing, rights, and community — often with duct-taped spreadsheets and DMs. Creatorbox is my space to test small products that remove one sharp pain at a time: repurposing workflows, lightweight analytics, templates, or automation around content pipelines.",
+          "Most “AI for creators” tools bolt a chat box onto export presets. CreatorBox goes the other way: the agent is the workflow — draft a brief, pull references, generate variants, revise against feedback, and export in formats your platforms expect. The UI stays editor-first; the harness handles branching plans, tool routing, and checkpoints when a generation goes sideways.",
       },
       {
         id: "p2",
         type: "paragraph",
         content:
-          "Because the surface area is broad, I keep scope brutal. Each experiment has a hypothesis, a two-week build cap, and a single metric — time saved, posts shipped, or repeat usage. What graduates out of the box becomes a real repo; what does not gets documented and shelved without guilt.",
-        note: "UGC products die when creators do extra work to use them.",
+          "That split matters because creative work is not one prompt and done. It is loops — hook tests, thumbnail passes, caption tweaks, re-exports. Shipping those loops inside a desktop app (not a web toy) keeps latency, file size, and privacy on your machine while still letting agents orchestrate the boring middle.",
+        note: "The win is fewer context switches, not more tokens.",
       },
       {
-        id: "h2",
-        type: "heading",
-        content: "What I explore here",
-      },
-      {
-        id: "numbered",
-        type: "numbered",
-        items: [
+        id: "technical-read",
+        type: "technicalReadNav",
+        heading: "Technical read",
+        summary:
+          "Pick your lane — three deep dives into agent orchestration, systems architecture, and content strategy.",
+        parentSlug: "creatorbox",
+        links: [
           {
-            title: "Workflow, not features",
-            body: "Tools win when they slot into how someone already posts — not when they demand a new habit.",
+            slug: "agentic-ai",
+            title: "For the Agentic AI Gods",
+            emoji: "🤖",
+            accentClass: "bg-purple/20",
+            teaser:
+              "Harness-first design, DeepAgents on LangGraph, and why creative workflows need branching checkpoints.",
           },
           {
-            title: "Prototypes over polish",
-            body: "Neo-brutalist UIs and scripts are fine if they prove the loop. Polish comes after retention.",
+            slug: "system-design",
+            title: "For the System Design Bros",
+            emoji: "🏗️",
+            accentClass: "bg-teal/15",
+            teaser:
+              "Extension-point core, electron-vite shell, local-first storage — and why each was chosen.",
           },
           {
-            title: "Rights and reuse",
-            body: "Remix-friendly formats and clear attribution reduce friction for collaborative creator teams.",
+            slug: "creative",
+            title: "For the Creative & Influencer Geniuses",
+            emoji: "🎬",
+            accentClass: "bg-yellow/40",
+            teaser:
+              "Hook–body–CTA architecture, competitor analysis functions, and why format beats generic AI copy.",
           },
         ],
       },

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/content";
+import { getCreatorboxReadSlugs } from "@/lib/creatorbox-reads";
 import { getWorkSlugs } from "@/lib/work-posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+  const creatorboxReadEntries = getCreatorboxReadSlugs().map((read) => ({
+    url: `${siteUrl}/work/creatorbox/${read}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
   }));
 
   return [
@@ -31,5 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     ...workEntries,
+    ...creatorboxReadEntries,
   ];
 }

@@ -6,6 +6,7 @@ import { NumberedList } from "./NumberedList";
 import { QuoteBox } from "./QuoteBox";
 import { StrategicInsight } from "./StrategicInsight";
 import { SuggestedNextRead } from "./SuggestedNextRead";
+import { TechnicalReadNav } from "./TechnicalReadNav";
 
 type WorkArticleProps = {
   post: WorkPost;
@@ -57,6 +58,16 @@ export function WorkArticle({ post }: WorkArticleProps) {
             );
           case "insight":
             return <StrategicInsight key={section.id}>{section.content}</StrategicInsight>;
+          case "technicalReadNav":
+            return (
+              <TechnicalReadNav
+                key={section.id}
+                heading={section.heading}
+                summary={section.summary}
+                parentSlug={section.parentSlug}
+                links={section.links}
+              />
+            );
           default:
             return null;
         }
