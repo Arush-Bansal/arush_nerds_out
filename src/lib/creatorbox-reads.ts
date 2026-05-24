@@ -82,6 +82,41 @@ export const creatorboxReads: CreatorboxRead[] = [
       },
     ],
   },
+  {
+    slug: "user-security",
+    title: "For Users Who Read the Fine Print",
+    subtitle: "Keychain vault, workspace boundaries, and agent gates before anything touches disk",
+    emoji: "🔒",
+    accentClass: "bg-red/10",
+    description:
+      "How CreatorBox keeps your keys, files, and previews under your control — desktop isolation, OS credential storage, workspace-scoped agents, and explicit approval before writes.",
+    points: [
+      {
+        title: "Renderer isolation + main-process gate",
+        body: "The UI runs with context isolation and without Node integration — no raw filesystem or shell from React. Native capabilities (open workspace, read files, run FFmpeg, store secrets) flow through a typed preload bridge and tRPC handlers in the main process only. The renderer never sees API keys or arbitrary disk paths.",
+      },
+      {
+        title: "API keys in the OS keychain",
+        body: "Anthropic and integration keys (Fal, ElevenLabs, Gemini) live in the system credential vault via keytar — not in project files, env vars, or localStorage. Keys are validated against the provider before storage, read only in the main process when a request needs them, and never logged or sent to the renderer.",
+      },
+      {
+        title: "Workspace-scoped agent filesystem",
+        body: "Agents operate inside the open workspace root via virtual paths (`/design.html`, not `C:\\…`). Middleware coerces model-supplied paths, blocks `..` traversal, and rejects escapes outside the workspace. Shell and file tools use deepagents backends rooted at that folder — the agent cannot wander your home directory.",
+      },
+      {
+        title: "Plan mode before destructive work",
+        body: "In plan mode the agent is read-only: explicit deny rules block writes, shell execution and HTTP-with-auth tools are off, and only explore/read tools run. The agent submits a plan for your approval; execution mode unlocks writes and shell only after you opt in — human-in-the-loop before anything hits disk.",
+      },
+      {
+        title: "Vault-backed HTTP and sandboxed previews",
+        body: "Integration API calls go through a dedicated HTTP tool that injects keys from the vault — agents are instructed never to put secrets in shell commands or URLs. HTML workspace previews render in a sandboxed iframe (`allow-scripts allow-same-origin` only). Media loads through a custom workspace protocol that resolves paths under the open folder and rejects escapes.",
+      },
+      {
+        title: "Explicit permission grants",
+        body: "Chromium permission prompts are handled conservatively: microphone and workspace screen capture are allowed when needed for voice input and recording; everything else is denied by default. Large assets stay local — no sync server in v1 — so your drafts and renders are not uploaded as a side effect of editing.",
+      },
+    ],
+  },
 ];
 
 const readsBySlug = Object.fromEntries(creatorboxReads.map((read) => [read.slug, read]));

@@ -327,7 +327,7 @@ const posts: Record<string, Omit<WorkPost, "nextRead">> = {
         type: "technicalReadNav",
         heading: "Technical read",
         summary:
-          "Pick your lane — three deep dives into agent orchestration, systems architecture, and content strategy.",
+          "Pick your lane — deep dives into agent orchestration, systems architecture, content strategy, and user-level security.",
         parentSlug: "creatorbox",
         links: [
           {
@@ -353,6 +353,14 @@ const posts: Record<string, Omit<WorkPost, "nextRead">> = {
             accentClass: "bg-yellow/40",
             teaser:
               "Hook–body–CTA architecture, competitor analysis functions, and why format beats generic AI copy.",
+          },
+          {
+            slug: "user-security",
+            title: "For Users Who Read the Fine Print",
+            emoji: "🔒",
+            accentClass: "bg-red/10",
+            teaser:
+              "OS keychain for API keys, workspace-scoped agents, plan-mode gates, and sandboxed previews.",
           },
         ],
       },
